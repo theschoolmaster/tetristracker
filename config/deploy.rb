@@ -1,4 +1,4 @@
-set :application, "TetrisTracker"
+set :application, "tetristracker"
 set :repository,  "git@github.com:theschoolmaster/tetristracker.git"
 
 # set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
@@ -23,6 +23,7 @@ set :bundle_without, [:development, :test]
 
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
+after "deploy", "deploy:symlink_config_files"
 
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
