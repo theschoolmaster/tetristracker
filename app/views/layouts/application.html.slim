@@ -6,6 +6,7 @@ html lang="en"
     title= content_for?(:title) ? yield(:title) : "tetristracker"
     = stylesheet_link_tag    "application"
     = javascript_include_tag "modernizr"
+    = javascript_include_tag "application"
     = csrf_meta_tags
   body
     = render 'layouts/nav'
@@ -20,5 +21,3 @@ html lang="en"
 
     .row.footer
       p &copy; theschoolmaster 2014
-
-    = javascript_include_tag "application"
