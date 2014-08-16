@@ -1,0 +1,11 @@
+= simple_form_for(@game) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :start_level, collection: 0..19, selected: current_user.games.last.start_level
+    = f.input :lines, type: :number
+    = f.input :score, type: :number
+    = f.hidden_field :user_id, value: current_user.id
+
+  .form-actions
+    = f.button :submit

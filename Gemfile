@@ -28,13 +28,13 @@ gem 'spring',        group: :development
 
 # interface
 gem 'font-awesome-rails'
-gem 'jquery-rails'
 gem 'simple_form'
 gem 'slim-rails'
 gem 'therubyracer', platforms: :ruby
 gem 'colorbox-rails'
 gem 'foundation-rails'
 gem 'modernizr-rails'
+#gem 'foundation_rails_helper'
 
 # charting
 gem 'groupdate'

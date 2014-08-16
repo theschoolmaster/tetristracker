@@ -1,0 +1,29 @@
+h1 Listing games
+
+table
+  thead
+    tr
+      th Score
+      th Start level
+      th Finish level
+      th Lines
+      th User
+      th
+      th
+      th
+
+  tbody
+    - @games.each do |game|
+      tr
+        td = game.score
+        td = game.start_level
+        td = game.finish_level
+        td = game.lines
+        td = game.user_id
+        td = link_to 'Show', game
+        td = link_to 'Edit', edit_game_path(game)
+        td = link_to 'Destroy', game, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Game', new_game_path

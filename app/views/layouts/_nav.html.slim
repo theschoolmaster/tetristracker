@@ -1,0 +1,26 @@
+nav.top-bar data-topbar="" 
+  ul.title-area
+    li.name
+      h1
+        a href="#" TetrisTracker
+    /! Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
+    li.toggle-topbar.menu-icon
+      a href="#" 
+        span Menu
+  section.top-bar-section
+    /! Right Nav Section
+    ul.right
+      - if current_user.nil?
+        li=link_to 'Log In', login_url
+      - else
+        li.has-dropdown
+          a= current_user.email
+          ul.dropdown
+            li= link_to 'Account', edit_user_registration_url(current_user)
+            li= link_to 'Log Out', logout_url
+    /! Left Nav Section
+    - unless current_user.nil?
+      ul.left
+        li= link_to 'Log Game', new_user_game_url(current_user)
+        li= link_to 'All Games', games_url
+        li= link_to 'My Games', user_games_url(current_user)
