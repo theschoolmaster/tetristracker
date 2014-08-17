@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   get 'home/show'
 
-  root 'home#show'
+  root 'games#new'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
