@@ -15,6 +15,9 @@
 /log/*.log
 /tmp
 
+# ignore vim
+*.swp
+
 # Ignore database.yml
 /config/database.yml
 /config/secrets.yml

@@ -1,33 +1,14 @@
-h1 Listing games
+.row
+  h1 Recent Games
 
-table
-  thead
-    tr
-      th Score
-      th Start level
-      th Finish level
-      th Lines
-      th User
-      th
-      th
-      th
+.row
 
-  tbody
-    - @games.each do |game|
-      tr
-        td = game.score
-        td = game.start_level
-        td = game.finish_level
-        td = game.lines
-        td = game.user_id
-        td = link_to 'Show', game
-        td = link_to 'Edit', edit_game_path(game)
-        td = link_to 'Destroy', game, data: {:confirm => 'Are you sure?'}, :method => :delete
+  .small-12.medium-4.columns
+    = render 'table'
 
-br
+  .small-12.medium-8.columns
 
-= will_paginate @games
-
+    = line_chart @games.group_by_day(:created_at).count
 br
 
 = link_to 'Log Game', new_game_path
