@@ -5,7 +5,11 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.json
   def index
-    @games = Game.paginate(page: params[:page], per_page: 20)
+    if params[:user_id].blank?
+      @games = Game.paginate(page: params[:page], per_page: 20)
+    else
+      @games = User.find(params[:user_id]).games.paginate(page: params[:page], per_page: 20)
+    end
   end
 
   # GET /games/1
