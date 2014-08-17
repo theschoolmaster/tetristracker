@@ -3,12 +3,25 @@
 
 .row
 
-  .small-12.medium-4.columns
+  .small-12.medium-6.columns
     = render 'table'
 
-  .small-12.medium-8.columns
+  .small-12.medium-6.columns
 
-    = line_chart @games.group_by_day(:created_at).count
+    div= line_chart @games.reverse.each_with_index.map { |g,i| [i, g.score] },
+                    min: 0, \
+                    max: 999999, \
+                    library: { title: 'last 10 scores with trend', \
+                               pointSize: 0, \
+                               chartArea: {width: '80%', height: '80%'}, \
+                               legend: { position: 'bottom'}, \
+                               backgroundColor: { fill:'transparent' }, \
+                               trendlines: { \
+                                 0 => { type: 'polynomial', degree: 3, labelInLegend: 'Trend Line', visibleInLegend: true }, \
+                                }, \
+                               }, \
+                    height: "400px"
+
 br
 
 = link_to 'Log Game', new_game_path

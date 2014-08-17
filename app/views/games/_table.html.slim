@@ -1,0 +1,32 @@
+table
+  thead
+    tr
+      th Score
+      th Start level
+      th Finish level
+      th Lines
+      th User
+      th Played
+      th
+
+  tbody
+    - @games.each do |game|
+      tr
+        td = game.score
+        td = game.start_level
+        td = game.calculated_finish_level
+        td = game.lines
+        td = game.user_id
+        td = days_ago(game.created_at)
+        td style="min-width: 170px;"
+          ul.button-group.radius
+            li= link_to game, class: 'button tiny' do
+              i.fi-zoom-in
+            li= link_to edit_game_path(game), class: 'button tiny' do
+              i.fi-page-edit
+            li= link_to game, data: {:confirm => 'Are you sure?'}, :method => :delete, class: 'button tiny' do
+              i.fi-trash
+
+br
+
+= will_paginate @games
