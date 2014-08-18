@@ -2,7 +2,7 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :start_level, collection: 0..19, selected: current_user.try(:games).try(:last).try(:start_level)
+    = f.input :start_level, collection: 0..19, selected: current_user.try(:games).try(:first).try(:start_level)
     = f.input :lines, type: :number
     = f.input :score, type: :number
     = f.hidden_field :user_id, value: current_user.id
