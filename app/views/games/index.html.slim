@@ -22,6 +22,19 @@
                                }, \
                     height: "400px"
 
+    div= line_chart current_user.games.reverse.map { |g| [g.created_at, g.score] },
+                    min: 0, \
+                    max: 999999, \
+                    library: { title: 'all games with trend', \
+                               pointSize: 0, \
+                               chartArea: {width: '80%', height: '80%'}, \
+                               legend: { position: 'bottom'}, \
+                               backgroundColor: { fill:'transparent' }, \
+                               trendlines: { \
+                                 0 => { type: 'polynomial', degree: 3, labelInLegend: 'Trend Line', visibleInLegend: true }, \
+                                }, \
+                               }, \
+                    height: "400px"
 br
 
 = link_to 'Log Game', new_game_path
