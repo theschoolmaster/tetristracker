@@ -1,3 +1,5 @@
+require 'bundler/capistrano'
+
 set :application, "tetristracker"
 set :repository,  "git@github.com:theschoolmaster/tetristracker.git"
 
