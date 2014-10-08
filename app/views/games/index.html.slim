@@ -8,7 +8,11 @@
 
   .small-12.medium-6.columns
 
-    div= line_chart @games.reverse.each_with_index.map { |g,i| [i, g.score] },
+    - chart_data = []
+    - chart_data << ['Date Played', 'Score', 'Start Level']
+    - @games.reverse.each_with_index.map { |g,i| chart_data << [g.created_at, g.score, g.start_level] }
+
+    div= column_chart chart_data,
                     min: 0, \
                     max: 999999, \
                     library: { title: 'last 10 scores with trend', \
@@ -21,6 +25,22 @@
                                 }, \
                                }, \
                     height: "400px"
+
+    div= line_chart @games.reverse.each_with_index.map { |g,i| [g.created_at, g.score] },
+                    min: 0, \
+                    max: 999999, \
+                    library: { title: 'last 10 scores with trend', \
+                               pointSize: 0, \
+                               chartArea: {width: '80%', height: '80%'}, \
+                               legend: { position: 'bottom'}, \
+                               backgroundColor: { fill:'transparent' }, \
+                               trendlines: { \
+                                 0 => { type: 'polynomial', degree: 3, labelInLegend: 'Trend Line', visibleInLegend: true }, \
+                                }, \
+                               }, \
+                    height: "400px"
+
+    div= column_chart current_user.games.reverse.map { |g| [g.created_at, g.score] }
 
     div= line_chart current_user.games.reverse.map { |g| [g.created_at, g.score] },
                     min: 0, \
