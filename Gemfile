@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
+gem 'rails', '4.2.10'
 # Use sqlite3 as the database for Active Record
 gem 'mysql2'
 gem 'yaml_db', git: 'git@github.com:turgu1/yaml_db.git'
@@ -71,7 +71,6 @@ group :development do
   gem 'ruby-prof'
   gem 'what_methods'
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
-  gem 'pry-byebug'
   gem 'meta_request', git: 'git@github.com:theschoolmaster/rails_panel.git'
   gem 'guard'
   gem 'guard-livereload', require: false
